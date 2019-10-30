@@ -37,8 +37,11 @@ class X5WebViewActivity : Activity() {
         title = intent.getStringExtra("title") ?: ""
         webView?.apply {
             layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
-            loadUrl(intent.getStringExtra("url"))
+
             settings.javaScriptEnabled = true
+            settings.allowFileAccess = true
+            settings.useWideViewPort = true
+            settings.loadWithOverviewMode = true
             webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
                     view.loadUrl(url)
@@ -50,6 +53,7 @@ class X5WebViewActivity : Activity() {
                     return super.shouldOverrideUrlLoading(view, request)
                 }
             }
+            loadUrl(intent.getStringExtra("url"))
         }
 
         var webChromeClient: WebChromeClient = object : WebChromeClient() {
