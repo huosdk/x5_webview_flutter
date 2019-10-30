@@ -4,9 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.graphics.PixelFormat
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.webkit.WebSettings
 import android.widget.FrameLayout
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest
@@ -52,6 +54,10 @@ class X5WebViewActivity : Activity() {
                     view.loadUrl(request?.url.toString())
                     return super.shouldOverrideUrlLoading(view, request)
                 }
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
             }
             loadUrl(intent.getStringExtra("url"))
         }
