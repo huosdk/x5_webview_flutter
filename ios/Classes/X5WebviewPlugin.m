@@ -6,6 +6,8 @@
   FlutterMethodChannel *channel = [FlutterMethodChannel
               methodChannelWithName:@"x5_webview"
                     binaryMessenger:[registrar messenger]];
-      [registrar addMethodCallDelegate:instance channel:channel];
+  X5WebviewPlugin* instance = [[X5WebviewPlugin alloc] init];
+  [registrar addMethodCallDelegate:instance channel:channel];
 }
 @end
+
