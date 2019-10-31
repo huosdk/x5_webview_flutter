@@ -3,7 +3,7 @@
 @implementation X5WebViewPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FlutterMethodChannel* channel = [FlutterMethodChannel
-      methodChannelWithName:@"flutter_download_plugin"
+      methodChannelWithName:@"x5_webview"
             binaryMessenger:[registrar messenger]];
   X5WebViewPlugin* instance = [[X5WebViewPlugin alloc] init];
   [registrar addMethodCallDelegate:instance channel:channel];
